@@ -22,6 +22,16 @@
 
 - base_view: events  
   joins:
+  - join: ad_clicks
+    sql_foreign_key: events.event_id
+  - join: ad_conversions
+    sql_foreign_key: events.event_id
+  - join: ad_impressions
+    sql_foreign_key: events.event_id
+  - join: screen_view
+    sql_foreign_key: events.event_id
+  - join: link_click
+    sql_foreign_key: events.event_id
   - join: visits
     sql_on: |
       events.domain_userid = visits.domain_userid AND
