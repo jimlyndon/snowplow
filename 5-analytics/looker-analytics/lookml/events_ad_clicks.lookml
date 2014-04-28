@@ -64,8 +64,7 @@
     filters:
       event_type: ad_click
 
-  - measure: cpc_cost
+  - measure: cpa_cost
     type: sum
-    sql: ${cost}
-    filters:
-      cost_model: 'cpc'
+    decimals: 2
+    sql: SUM(CASE WHEN ${cost_model}=='cpc' THEN ${cost} ELSE 0 END)/1000

@@ -61,8 +61,7 @@
     filters:
       event_type: ad_impression
 
-  - measure: cpm_cost
+  - measure: cpa_cost
     type: sum
-    sql: ${cost}
-    filters:
-      cost_model: 'cpm'
+    decimals: 2
+    sql: SUM(CASE WHEN ${cost_model}=='cpm' THEN ${cost} ELSE 0 END)/1000

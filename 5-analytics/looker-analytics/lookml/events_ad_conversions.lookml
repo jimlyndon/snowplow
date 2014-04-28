@@ -66,9 +66,15 @@
 
   - measure: cpa_cost
     type: sum
-    sql: ${cost}
+    decimals: 2
+    sql: SUM(CASE WHEN ${cost_model}=='cpa' THEN ${cost} ELSE 0 END)/1000
+    
+  - measure: cpm_cost
+    type: number
+    decimals: 2
+    sql: SUM(${cost})/1000
     filters:
-      cost_model: 'cpc'
+      cost_model: 'cpm'
 
   - measure: value_driven_initial_estimate
     type: sum
