@@ -29,7 +29,10 @@
       AND domain_userid <> ''
       GROUP BY 1
       
-    persist_for: 3 hours
+    sql_trigger_value: | 
+      SELECT 
+      MAX(collector_tstamp)
+      FROM atomic.events
   
   fields:
   

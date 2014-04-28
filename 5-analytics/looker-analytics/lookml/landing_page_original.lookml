@@ -34,7 +34,10 @@
         GROUP BY 1                      -- Remove duplicates (v. occasional case where two page views have exactly the same dvce_tstamp)
       
 
-    persist_for: 3 hours
+    sql_trigger_value: | 
+      SELECT 
+      MAX(collector_tstamp)
+      FROM atomic.events
 
   fields:
     

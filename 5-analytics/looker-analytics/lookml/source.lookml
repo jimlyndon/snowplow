@@ -48,7 +48,10 @@
         GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13) AS t
       WHERE "rank" = 1 -- Only pull the first referer for each visit
     
-    persist_for: 3 hours
+    sql_trigger_value: | 
+      SELECT 
+      MAX(collector_tstamp)
+      FROM atomic.events
 
   fields:
   
