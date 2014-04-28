@@ -53,7 +53,7 @@
   - dimension: cost
     sql: ${TABLE}.cost
 
-  # Measures #
+  # MEASURES #
 
   - measure: impressions_count
     type: count_distinct

@@ -56,7 +56,7 @@
   - dimension: cost
     sql: ${TABLE}.cost
 
-  # Measures #
+ # MEASURES #
 
   - measure: ad_click_count
     type: count_distinct

@@ -56,7 +56,7 @@
   - dimension: initial_value
     sql: ${TABLE}.initial_value
 
-  # Measures #
+# MEASURES #
 
   - measure: conversion_count
     type: count_distinct

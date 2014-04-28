@@ -16,7 +16,7 @@
 # License:     Apache License Version 2.0
 
 - view: events
-  sql_table_name: atomic.events
+  sql_table_name: atomic.com_snowplowanalytics_link_click
   fields:
 
 # DIMENSIONS # 
@@ -24,3 +24,25 @@
   - dimension: event_id
     primary_key: true
     sql: ${TABLE}.root_id
+
+  - dimension: event_type
+    sql: ${TABLE}.type_name
+
+  - dimension: link_id
+    sql: ${TABLE}.element_id
+
+  - dimension: link_classes
+    sql: ${TABLE}.element_classes
+
+  - dimension: link_target
+    sql: ${TABLE}.element_target
+
+  - dimension: target_url
+    sql: ${TABLE}.target_url
+
+# MEASURES #
+  - measure: link_click_count 
+    type: count_distinct
+    sql: ${event_id}
+    filters:
+      - event_type: 'link_click'

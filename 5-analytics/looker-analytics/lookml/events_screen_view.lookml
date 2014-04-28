@@ -16,11 +16,28 @@
 # License:     Apache License Version 2.0
 
 - view: events
-  sql_table_name: atomic.events
+  sql_table_name: atomic.com_snowplowanalytics_screen_view
   fields:
 
 # DIMENSIONS # 
 
   - dimension: event_id
     primary_key: true
-    sql: ${TABLE}.event_id
+    sql: ${TABLE}.root_id
+
+  - dimension: event_type
+    sql: ${TABLE}.type_name
+
+  - dimension: name
+    sql: ${TABLE}.name
+
+  - dimension: id
+    sql: ${TABLE}.id
+
+# MEASURES #
+
+  - measure: screen_view_count 
+    type: count_distinct
+    sql: ${event_id}
+    filters:
+      - event_type: 'screen_view'
