@@ -58,6 +58,4 @@
         :vendor_prefixes:
           - com.snowplowanalytics
 :enrichments:
-  :anon_ip:
-    :enabled: false
-    :anon_octets: 1 # Or 2, 3 or 4. 0 is same as enabled: false
+  ./enrichments
